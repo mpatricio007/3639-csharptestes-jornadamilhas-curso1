@@ -23,7 +23,7 @@ public class Periodo: Valida
     {
         if (DataInicial > DataFinal)
         {
-            Erros.RegistrarErro("Erro: Data de ida não pode ser maior que a data de volta.");
+            Erros.RegistrarErro(ErrorMessages.PedidoComDataInicioMaiorQueDataFinal);
         }
 
         
