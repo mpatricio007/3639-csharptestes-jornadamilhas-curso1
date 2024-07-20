@@ -47,8 +47,3 @@ jobs:
           dotnet build
           dotnet test --collect:"XPlat Code Coverage"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-
-      - name: Report coverage to SonarCloud
-        shell: powershell
-        run: |
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.cs.vscoveragexml.reportsPaths="**/coverage.cobertura.xml" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
