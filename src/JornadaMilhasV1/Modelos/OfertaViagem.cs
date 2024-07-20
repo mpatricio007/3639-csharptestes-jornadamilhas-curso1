@@ -2,10 +2,10 @@
 
 namespace JornadaMilhasV1.Modelos;
 
-public class OfertaViagem: Valida
+public class OfertaViagem : Valida
 {
     public int Id { get; set; }
-    public Rota Rota { get; set; } 
+    public Rota Rota { get; set; }
     public Periodo Periodo { get; set; }
     public double Preco { get; set; }
 
@@ -25,16 +25,9 @@ public class OfertaViagem: Valida
 
     protected override void Validar()
     {
-        if (!Periodo.EhValido)
-        {
-            Erros.RegistrarErro(Periodo.Erros.Sumario);
-        } else if (Rota == null || Periodo == null)
-        {
-            Erros.RegistrarErro(ErrorMessages.RotaOrPeriodoNull);
-        } 
-        else if (Preco <= 0)
-        {
-            Erros.RegistrarErro(ErrorMessages.PrecoNegativo);
-        }
+        VerificarERegistrarErro(Periodo == null, ErrorMessages.PeriodoNull);
+        VerificarERegistrarErro(Periodo != null && !Periodo.EhValido, Periodo?.Erros.Sumario);
+        VerificarERegistrarErro(Rota == null, ErrorMessages.RotaNull);
+        VerificarERegistrarErro(Preco <= 0, ErrorMessages.PrecoNegativo);
     }
 }

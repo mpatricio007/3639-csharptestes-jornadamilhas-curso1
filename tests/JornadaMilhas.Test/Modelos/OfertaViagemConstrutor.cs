@@ -28,7 +28,7 @@ namespace JornadaMilhas.Test.Modelos
         }
 
         [Fact]
-        public void RetornaErroMessageRotaOrPeriodoNullQuandoRotaNula()
+        public void RetornaErroMessageRotaNullQuandoRotaNula()
         {
             //Arrange
             const string strOrigem = "origem";
@@ -48,7 +48,7 @@ namespace JornadaMilhas.Test.Modelos
 
             //Assert
             Assert.Null(rota);
-            Assert.Contains(ErrorMessages.RotaOrPeriodoNull, ofertaViagem.Erros.Sumario);
+            Assert.Contains(ErrorMessages.RotaNull, ofertaViagem.Erros.Sumario);
             Assert.False(result);
         }
 

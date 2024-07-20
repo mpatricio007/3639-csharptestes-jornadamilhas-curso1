@@ -25,7 +25,5 @@ public class Periodo: Valida
         {
             Erros.RegistrarErro(ErrorMessages.PedidoComDataInicioMaiorQueDataFinal);
         }
-
-        
     }
 }

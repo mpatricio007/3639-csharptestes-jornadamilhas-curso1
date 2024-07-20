@@ -12,4 +12,12 @@ public abstract class Valida : IValidavel
     public bool EhValido => erros.Count() == 0;
     public Erros Erros => erros;
     protected abstract void Validar();
+
+    protected void VerificarERegistrarErro(bool condicao, string mensagemErro)
+    {
+        if (condicao)
+        {
+            Erros.RegistrarErro(mensagemErro);
+        }
+    }
 }
