@@ -41,7 +41,7 @@ namespace JornadaMilhas.Test.Modelos
             Periodo periodo = new Periodo(dtInicio, dtFinal);
             const double preco = 100.00;
             OfertaViagem ofertaViagem = new OfertaViagem(rota, periodo, preco);
-
+            //teste
 
             //Act
             var result = ofertaViagem.EhValido;
