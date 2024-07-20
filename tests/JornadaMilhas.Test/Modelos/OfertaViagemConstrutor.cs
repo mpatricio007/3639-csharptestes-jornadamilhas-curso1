@@ -73,7 +73,7 @@ namespace JornadaMilhas.Test.Modelos
 
             //Assert            
             Assert.Contains(ErrorMessages.PedidoComDataInicioMaiorQueDataFinal, ofertaViagem.Erros.Sumario);
-            Assert.False(result);
+            Assert.False(result);           
         }
 
         [Fact]
