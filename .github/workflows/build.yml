@@ -43,6 +43,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"mpatricio007_3639-csharptestes-jornadamilhas-curso1" /o:"mpatricio007-1" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"mpatricio007_3639-csharptestes-jornadamilhas-curso1" /o:"mpatricio007-1" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths="**/coverage.cobertura.xml"
           dotnet build
+          dotnet test --collect:"XPlat Code Coverage"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+      - name: Report coverage to SonarCloud
+        shell: powershell
+        run: |
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.cs.vscoveragexml.reportsPaths="**/coverage.cobertura.xml" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
